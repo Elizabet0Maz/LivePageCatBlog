@@ -1,0 +1,196 @@
+//resetting original setitngs of the body
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// Break Points 
+@mixin bp($point) {
+  @if $point == desktop {
+    @media (min-width: 1024px) { @content; }
+  } @else if $point == tablet {
+    @media (min-width: 720px) and (max-width: 1023px) { @content; }
+  } @else if $point == large-mobile {
+    @media (min-width: 540px) and (max-width: 719px) { @content; }
+  } @else if $point == small-mobile {
+    @media (max-width: 539px) { @content; }
+  }
+}
+
+// Variables
+$page-bg: #FFFDF7;
+$colour-1: #A2D2FF;
+$colour-2: #FFC8DD;
+$colour-3: #FDFD96; 
+$text-main: #5D4037;
+$CardBg: #FFFFFF;
+
+$radius-sm: 15px;
+$radius-lg: 30px;
+
+$text-size: 0.95rem;
+
+// Body styled with media queries applied along with image Bg
+body {
+  background-image: url('../css/Bg.png');
+  background-repeat: repeat;
+  color: $text-main;
+  font-family: 'Quicksand', sans-serif;
+  padding: 10px;
+  background-size: 60px;
+  background-color: $page-bg;
+
+
+
+    @include bp(desktop) {
+    padding: calc(#{$text-size} * 2.2);
+    background-size: 100px;
+  }
+  @include bp(tablet) {
+    padding: calc(#{$text-size} * 1.1);
+    background-size: 80px;
+  }
+}
+
+// Headings
+h1 {
+  text-align: center;
+  font-family: 'Fredoka', sans-serif;
+  margin-top: 15px;
+  margin-bottom: 0.5rem;
+  font-size: calc(#{$text-size} * 1.9);
+
+  @include bp(tablet) {
+    font-size: calc(#{$text-size} * 2.3);
+    margin-bottom: 2rem;
+  }
+
+  @include bp(desktop) {
+    font-size: calc(#{$text-size} * 2.8);
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
+// Admin Form
+.AdminForm { 
+  padding: 30px;
+  border-radius: $radius-lg;
+  box-shadow: 0 10px 30px rgba(162, 210, 255, 0.7);
+  border: 4px solid $CardBg;
+  background: $CardBg;
+  width: 100%;
+  margin: 0 auto; // center form
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @include bp(tablet) {
+    max-width: 600px;
+    padding: calc(30px * 0.8);
+  }
+
+  @include bp(desktop) {
+    max-width: 700px;
+    padding: 30px;
+    margin-top: -1rem;
+  }
+}
+
+// Input fields styled
+input {
+  width: 100%;
+  padding: 14px;
+  border-radius: $radius-sm;
+  border: 2px solid #f29dee;
+  background-color: #fff8ff;
+  font-family: inherit;
+  font-size: $text-size;
+  outline: none;
+  transition: 0.3s;
+}
+
+input:placeholder {
+  color: $colour-1;
+}
+
+input:focus {
+  border-color: $colour-1;
+  box-shadow: 0 0 10px rgba(186, 222, 255, 0.7);
+}
+
+
+textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: $radius-sm;
+  border: 2px solid #f29dee;
+  background-color: #fff8ff;
+  font-family: inherit;
+  font-size: $text-size;
+  outline: none;
+  resize: vertical;
+  min-height: 200px;
+  transition: 0.3s;
+}
+
+textarea:focus {
+  border-color: $colour-1;
+}
+
+textarea:placeholder {
+  color: $colour-1;
+}
+//media queries for the text boxes
+@include bp(desktop) {
+  textarea { 
+    min-height: 300px;
+    font-size: calc(#{$text-size} * 1.1);
+  }
+
+  @include bp(tablet) {
+  input { font-size: calc(#{$text-size} * 1.05); }
+  textarea { min-height: 260px; }
+}
+
+}
+
+// Smaller screens
+@media (max-width: 380px) {
+  .AdminForm {
+    padding: 15px;
+    gap: 10px;
+  }
+
+  button {
+    font-size: 0.9rem;
+  }
+}
+
+// Buttons styled
+button {
+  padding: 14px;
+  border-radius: $radius-lg;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: bold;
+  font-size: calc(#{$text-size} * 1.1);
+  background: $colour-1;
+  color: $CardBg;
+  border: none;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: $colour-2;
+  transform: translateY(-3px);
+}
+
+//media queries for tablet size button
+@include bp(tablet) {
+  button {
+    padding: 15px;
+    font-size: calc(#{$text-size} * 1.2);
+  }
+}

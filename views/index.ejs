@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>CatBlog</title>
+</head>
+<body>
+
+    <!--Navigation Bar-->
+    <nav class="MainNav">
+        <!--Left Side of Naviation Bar-->
+        <div class="NavLeft">
+            <!-- Logo-->
+            <a href="/" class="logo">
+                🐈 CAT<span class="highlight">BLOG</span>
+            </a>
+            <!-- Links to other pages-->
+            <ul class="Menu">
+                <li><a href="/breeds">Cat Breeds</a></li>
+                <li><a href="/admin">Create Post</a></li>
+            </ul>
+        </div>
+        <!-- Search form sends requst to /breeds -->
+        <form action="/breeds" method="GET" class="SearchBox">
+            <input type="text" name="search" placeholder="Search breeds...">
+            <button type="submit">🔍</button>
+        </form>
+    </nav>
+<!--Hero/Banner section-->
+    <header class="Banner">
+        <div class="HeroContent">
+            <h1>Welcome to the <br>Cat World!</h1>
+            <p>Find out more about the fluffiest of the fluffiest purrfect cats!</p>
+        </div>
+    </header>
+<!--Start of the day section/ Featured section-->
+    <section class="FeaturedSection">
+        <h2>Star of the Day</h2>
+        <div class="FeaturedCard">
+            <img src="https://cdn2.thecatapi.com/images/oGefY4YoG.jpg" alt="Ragdoll">
+            <div class="CardContent">
+                <h3>The Ragdoll</h3>
+                <p>
+                    The Ragdoll is a breed of cat with a distinct colorpoint coat and blue eyes. Its morphology is large and weighty, and it has a semi-long and silky soft coat. American breeder Ann Baker developed Ragdolls in the 1960s. They are best known for their docile, placid temperament and affectionate nature. The name Ragdoll is derived from the tendency to go limp and relaxed when picked up.`    The breed is particularly popular in both the United Kingdom and the United States.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog section -->
+    <section class="BlogSection">
+        <h2>Latest Stories</h2>
+        <!--ff there are no posts in the Database
+        "<  %" this means we request JavaScript to begin "%  >" End execution of the JavaScript-->
+        <% if (posts.length === 0) { %>
+            <div class="NoPosts">
+                <p>No stories yet...</p>
+                <a href="/admin">Create the first one</a>
+            </div>
+            <!--ff there are posts in the Database -->
+        <% } else { %>
+            <div class="GridContainer BlogGrid">
+                 <!--loop through each post "<  %" this means we request JavaScript to begin-->
+                <% posts.forEach(post => { %>
+                    <div class="BlogCard">
+                        <!--image container -->
+                        <div class="BlogImageContainer">
+                            <!--We request to post image from URL into out BlogImage container "<  %= " means we request to give an output alternatively print-->
+                            <img src="<%= post.image %>" alt="Cat Story Image">
+                        </div>
+                        <!-- Posting title and the content in BlogContent class-->
+                        <div class="BlogContent">
+                            <h3><%= post.title %></h3>
+                            <p><%= post.content %></p> 
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        <% } %>
+    </section>
+
+</body>
+</html>

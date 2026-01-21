@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/cat_breeds.css">
+     <!-- imported google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <title>Cat Breeds</title>
+</head>
+<body>
+
+    <!--Navigation Bar-->
+    <nav class="MainNav">
+        <!--Left Side of Naviation Bar-->
+        <div class="NavLeft">
+            <!-- Logo-->
+            <a href="/" class="logo">
+                🐈 CAT<span class="highlight">BLOG</span>
+            </a>
+            <!-- Links to other pages-->
+            <ul class="Menu">
+                <li><a href="/breeds">Cat Breeds</a></li>
+                <li><a href="/admin">Create Post</a></li>
+            </ul>
+        </div>
+        <!-- Search form sends requst to /breeds -->
+        <form action="/breeds" method="GET" class="SearchBox">
+            <input type="text" name="search" placeholder="Search breeds...">
+            <button type="submit">🔍</button>
+            
+            <% if (typeof searchTerm !== 'undefined' && searchTerm) { %>
+                <a href="/breeds" class="XBtn">❌</a>
+            <% } %>
+        </form>
+
+    </nav>
+<!--GridContainer class which holds all the CatCards fetched from the MongoDB-->
+    <div class="GridContainer"> 
+        <!-- loops through each breed in the breeds-->
+        <% breeds.forEach(breed => { %>
+            <!--CatCard holds image and information about the breed-->
+            <div class="CatCard"> 
+                <!--If breed has image paste it-->
+                <% if (breed.reference_image_id) { %>
+                    <img src="https://cdn2.thecatapi.com/images/<%= breed.reference_image_id %>.jpg" 
+                         alt="<%= breed.name %>">
+                         <!--otherswise display (No Image)-->
+                <% } else { %>
+                    <div class="no-image">
+                        <p>(No Image)</p>
+                    </div>
+                <% } %>
+                <!--Displays the name, temparament and description from MongoDB-->
+                <h2><%= breed.name %></h2>
+                <p><strong>Temperament:</strong> <i><%= breed.temperament %></i></p>
+                <p class="Description"><%= breed.description %></p>
+                
+            </div>
+        <% }) %>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/admin.css">
+      <title>Posting Forum</title>
+</head>
+<body>
+  <!--Page header-->
+<h1>Add New Story 🐾</h1>
+<!--Form sends data to /admin form using post method-->
+<form action="/admin" method="POST" class="AdminForm">
+  <!--input fields-->
+  <input name="title" placeholder="Post Title!" required>
+  <input name="image" placeholder="Paste cute picture of your purrfect friend" required>
+  <textarea name="content" placeholder="Write your story here..." required></textarea>
+  <button type="submit">Save Post ✨</button>
+</form>
+</body>
+</html>

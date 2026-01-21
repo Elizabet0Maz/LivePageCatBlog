@@ -1,0 +1,249 @@
+//resetting original padding & margin
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// Break Points
+@mixin bp($point) {
+  @if $point == desktop {
+    @media (min-width: 1024px) { @content; }
+  } @else if $point == tablet {
+    @media (min-width: 720px) and (max-width: 1023px) { @content; }
+  } @else if $point == mobile {
+    @media (max-width: 719px) { @content; }
+  }
+}
+
+// Variables
+$page-bg: #FFFDF7;
+$colour-1: #A2D2FF;
+$colour-2: #FFC8DD;
+$colour-3: #FDFD96;
+$text-dark: #5D4037;
+$CardBg: #FFFFFF;
+
+$radius-sm: 15px;
+$radius-lg: 30px;
+$text-size: 1rem;
+
+// Body
+body {
+  background-image: url('../css/Bg.png');
+  background-repeat: repeat;
+  background-size: calc(50px * 2);
+  background-color: $page-bg;
+  color: $text-dark;
+  font-family: 'Quicksand', sans-serif;
+  padding: calc(10px * 2);
+}
+
+// Navigation
+.MainNav {
+  background: $colour-1;
+  padding: 15px;
+  margin-bottom: 40px;
+  border-radius: $radius-lg;
+  box-shadow: 0 8px 20px rgba(162, 210, 255, 0.4); 
+  color: white;
+  border: 4px solid white;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+//left side of navigation bar
+  .NavLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+// Logo
+    .logo {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: white;
+      text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+
+      .highlight { 
+        color: $colour-3;
+        text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+      }
+
+      &:hover { 
+        transform: rotate(-3deg) scale(1.05); 
+        transition: 0.3s; 
+      }
+    }
+// Links styled
+    .Menu {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      padding: 0;
+
+      li a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        font-size: 1.1rem;
+        background: rgba(255,255,255,0.2);
+        padding: 8px 15px;
+        border-radius: $radius-sm;
+        transition: 0.3s;
+
+        &:hover { background: white; color: $colour-1; }
+      }
+    }
+  }
+//search bar style
+  .SearchBox {
+    display: flex;
+    gap: 5px; 
+    width: 100%;
+    background: white;
+    padding: 5px;
+    border-radius: $radius-lg;
+    flex-wrap: nowrap;
+
+    input {
+      flex: 1;
+      min-width: 0;
+      padding: 10px;
+      border: none;
+      outline: none;
+      font-family: 'Quicksand', sans-serif;
+      font-size: $text-size;
+      color: $text-dark;
+      background: transparent;
+    }
+// X link formated as a button
+.XBtn {
+  width: 40px;
+  height: 40px;
+  background: $colour-2;
+  color: white;
+  display: inline-flex;
+  align-items: center; 
+  justify-content: center;  
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+//Style of the button search
+    button{
+      background: $colour-2;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      flex-shrink: 0;
+      color: white;
+      font-weight: bold;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+//Media Queries
+    @include bp(desktop) {
+      width: 350px;
+    }
+  }
+
+  @include bp(desktop) {
+    flex-direction: row;
+    padding: 15px 40px;
+    justify-content: space-between;
+    align-items: center;
+
+    .NavLeft {
+      flex-direction: row;
+      width: auto;
+      gap: 40px;
+    }
+  }
+}
+
+
+// Grid Section
+.GridContainer {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-auto-rows: auto;
+
+  @include bp(tablet) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include bp(desktop) {
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: calc(764px * 2);
+    margin: 0 auto;
+    row-gap: 90px;
+    column-gap: 70px;
+  }
+}
+
+// Category Card
+.CatCard {
+  background: $CardBg;
+  padding: 15px;
+  border-radius: $radius-lg;
+  box-shadow: 0 10px 25px rgba(162, 210, 255, 0.5);
+  border: 1px solid $CardBg;
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &:hover {
+    transform: translateY(-12px);
+  }
+//image formating
+  img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: $radius-sm;
+    margin-bottom: 15px;
+    border: 3px solid #FFF0F5;
+  }
+//h2 style
+  h2 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: calc($text-size * 1.8);
+    margin-bottom: 10px;
+  }
+//desc style
+  .Description {
+    flex-grow: 1;
+    font-size: calc($text-size * 0.95);
+    background: #FFF9FB;
+    padding: 15px;
+    border-radius: $radius-sm;
+    margin-top: 10px;
+    overflow-y: visible;
+  }
+//style for strong 
+  strong {
+    color: $colour-1;
+  }
+}

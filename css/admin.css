@@ -1,0 +1,164 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url("../css/Bg.png");
+  background-repeat: repeat;
+  color: #5D4037;
+  font-family: "Quicksand", sans-serif;
+  padding: 10px;
+  background-size: 60px;
+  background-color: #FFFDF7;
+}
+@media (min-width: 1024px) {
+  body {
+    padding: calc(0.95rem * 2.2);
+    background-size: 100px;
+  }
+}
+@media (min-width: 720px) and (max-width: 1023px) {
+  body {
+    padding: calc(0.95rem * 1.1);
+    background-size: 80px;
+  }
+}
+
+h1 {
+  text-align: center;
+  font-family: "Fredoka", sans-serif;
+  margin-top: 15px;
+  margin-bottom: 0.5rem;
+  font-size: calc(0.95rem * 1.9);
+}
+@media (min-width: 720px) and (max-width: 1023px) {
+  h1 {
+    font-size: calc(0.95rem * 2.3);
+    margin-bottom: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  h1 {
+    font-size: calc(0.95rem * 2.8);
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
+.AdminForm {
+  padding: 30px;
+  border-radius: 30px;
+  box-shadow: 0 10px 30px rgba(162, 210, 255, 0.7);
+  border: 4px solid #FFFFFF;
+  background: #FFFFFF;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+@media (min-width: 720px) and (max-width: 1023px) {
+  .AdminForm {
+    max-width: 600px;
+    padding: 24px;
+  }
+}
+@media (min-width: 1024px) {
+  .AdminForm {
+    max-width: 700px;
+    padding: 30px;
+    margin-top: -1rem;
+  }
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 15px;
+  border: 2px solid #f29dee;
+  background-color: #fff8ff;
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition: 0.3s;
+}
+
+input:placeholder {
+  color: #A2D2FF;
+}
+
+input:focus {
+  border-color: #A2D2FF;
+  box-shadow: 0 0 10px rgba(186, 222, 255, 0.7);
+}
+
+textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 15px;
+  border: 2px solid #f29dee;
+  background-color: #fff8ff;
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  resize: vertical;
+  min-height: 200px;
+  transition: 0.3s;
+}
+
+textarea:focus {
+  border-color: #A2D2FF;
+}
+
+textarea:placeholder {
+  color: #A2D2FF;
+}
+
+@media (min-width: 1024px) {
+  textarea {
+    min-height: 300px;
+    font-size: calc(0.95rem * 1.1);
+  }
+}
+@media (min-width: 1024px) and (min-width: 720px) and (max-width: 1023px) {
+  input {
+    font-size: calc(0.95rem * 1.05);
+  }
+  textarea {
+    min-height: 260px;
+  }
+}
+@media (max-width: 380px) {
+  .AdminForm {
+    padding: 15px;
+    gap: 10px;
+  }
+  button {
+    font-size: 0.9rem;
+  }
+}
+button {
+  padding: 14px;
+  border-radius: 30px;
+  font-family: "Fredoka", sans-serif;
+  font-weight: bold;
+  font-size: calc(0.95rem * 1.1);
+  background: #A2D2FF;
+  color: #FFFFFF;
+  border: none;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #FFC8DD;
+  transform: translateY(-3px);
+}
+
+@media (min-width: 720px) and (max-width: 1023px) {
+  button {
+    padding: 15px;
+    font-size: calc(0.95rem * 1.2);
+  }
+}
